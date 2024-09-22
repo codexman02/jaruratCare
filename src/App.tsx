@@ -122,7 +122,7 @@ serviceForm.current?.close();
                 <h2 className="text-center text-white">Create a Service</h2>
                 </div>
               </>):(
-                <div className="d-flex flex-wrap">
+                <div className="d-flex flex-wrap justify-content-center">
                 {services.map((ele,i)=>(
               <ServiceCard serviceTitle={ele.serviceName} serviceDescription={ele.serviceDescription} servicePrice={ele.servicePrice} key={i} openUpdateModal={openUpdateModal} id={i} deleteService={deleteService}/>
             ))}

@@ -16,8 +16,8 @@ export default function SearchServices({getServices}:{getServices?:()=>serviceDa
         let newArr:serviceData[]=[]
          services.forEach((ele)=>{
             if (
-              ele.serviceDescription.toLowerCase().search(text.trim()) >= 0 ||
-              ele.serviceName.toLowerCase().search(text.trim()) >= 0
+              ele.serviceDescription.toLowerCase().search(text.toLowerCase().trim()) >= 0 ||
+              ele.serviceName.toLowerCase().search(text.toLowerCase().trim()) >= 0
             ) {
               newArr.push(ele)
               setTimeout(() => {
