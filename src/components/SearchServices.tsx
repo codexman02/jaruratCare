@@ -17,7 +17,7 @@ export default function SearchServices({getServices}:{getServices?:()=>serviceDa
          services.forEach((ele)=>{
             if (
               ele.serviceDescription.toLowerCase().search(text.toLowerCase().trim()) >= 0 ||
-              ele.serviceName.toLowerCase().search(text.toLowerCase().trim()) >= 0
+              ele.serviceName.toLowerCase().search(text.toLowerCase().trim()) >= 0 
             ) {
               newArr.push(ele)
               setTimeout(() => {
