@@ -21,7 +21,7 @@ function App() {
   function createService(data: serviceData) {
    data.id=services.length;
     setServices((prev)=>[...prev,data]);
-    console.log(data, "from parent");
+    // console.log(data, "from parent");
     serviceForm.current?.close();
   }
   function updateService(data:serviceData){
@@ -45,10 +45,10 @@ serviceForm.current?.close();
      ele.id=i
     })
     setServices(updatedServices);
-   console.log(updatedServices,id)
+  //  console.log(updatedServices,id)
   }
   function handleService(data:serviceData){
-    console.log(updateId,"handle id")
+    // console.log(updateId,"handle id")
   if(formType=="add"){
     createService(data)
   }else if(formType=="update"){
@@ -67,7 +67,7 @@ serviceForm.current?.close();
     setUpdateId(id);
     serviceForm.current?.showModal();
     setTimeout(()=>{
-      console.log(formType,updateId)
+      // console.log(formType,updateId)
     },1000)
   }
  function getServices(){
@@ -96,10 +96,10 @@ serviceForm.current?.close();
 
         <h1 className="text-center display-3 text-warning fw-semibold ">Health Services</h1>
         <div className="d-flex my-3">
-        <p className="mx-2 rounded-3  fw-normal fs-5 my-auto border px-3 py-1 bg-white text-warning border-warning" style={{cursor:'pointer'}} onClick={()=>{setIsServices(true)}}>
+        <p className="mx-2 rounded-3  fw-semibold fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning" style={{cursor:'pointer'}} onClick={()=>{setIsServices(true)}}>
              Services
             </p>
-        <p className="mx-2 rounded-3  fw-normal fs-5 my-auto border px-3 py-1 bg-white text-warning border-warning" onClick={()=>{setIsServices(false)}} style={{cursor:'pointer'}}>
+        <p className="mx-2 rounded-3  fw-normal fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning" onClick={()=>{setIsServices(false)}} style={{cursor:'pointer'}}>
              Search services
             </p>
         </div>
@@ -108,7 +108,7 @@ serviceForm.current?.close();
           {isServices?(<>
             <div className="d-flex p-3">
             <button
-              className="btn btn-primary mx-2"
+              className="btn btn-warning mx-2"
               onClick={() => {
                 openAddModal()
               }}

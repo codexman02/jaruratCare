@@ -28,7 +28,7 @@ export default function ServiceForm({
     defaultValues: {
       serviceName: "",
       serviceDescription: "",
-      servicePrice: 0,
+      servicePrice: 6,
     },
   });
 
@@ -94,7 +94,7 @@ export default function ServiceForm({
               type="number"
               {...register("servicePrice")}
               className="form-control"
-              id="servicePrice"
+              id="servicePrice" min={6}
             />
             {errors.servicePrice && (
               <small className="text-wrap text-danger">
@@ -102,7 +102,7 @@ export default function ServiceForm({
               </small>
             )}
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-warning">
             Submit
           </button>
         </form>
