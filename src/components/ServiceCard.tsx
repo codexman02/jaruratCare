@@ -2,7 +2,7 @@ import { useState } from "react";
 import VerticalDots from "./Snippets/VerticalDots";
 import CloseIcon from "./Snippets/CloseIcon";
 
-export default function ServiceCard({id,serviceTitle,serviceDescription,servicePrice,updateFormType,openUpdateModal,deleteService}:{id:number,serviceTitle?:string,serviceDescription?:string,servicePrice?:number,updateFormType?:(text:"add" | "update" | "delete")=>void,openUpdateModal?:(id:number)=>void,deleteService?:(id:number)=>void}){
+export default function ServiceCard({id,serviceTitle,serviceDescription,servicePrice,openUpdateModal,deleteService}:{id:number,serviceTitle?:string,serviceDescription?:string,servicePrice?:number,openUpdateModal?:(id:number)=>void,deleteService?:(id:number)=>void}){
   const [isOptions,setIsOptions]=useState(false);
    
     return(

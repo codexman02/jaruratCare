@@ -1,6 +1,4 @@
 import { useRef, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import ServiceCard from "./components/ServiceCard";
 import ServiceForm from "./components/ServiceForm";
 import SearchServices from "./components/SearchServices";
@@ -19,9 +17,7 @@ function App() {
   const [isServices,setIsServices]=useState(true);
   const [formType,setFormType]=useState<"add" | 'update' | "delete">('add');
   const [updateId,setUpdateId]=useState<number | null>(null)
- function updateFormType(text:"add" | 'update' | "delete"){
-setFormType(text)
- }
+ 
   function createService(data: serviceData) {
    data.id=services.length;
     setServices((prev)=>[...prev,data]);
@@ -128,7 +124,7 @@ serviceForm.current?.close();
               </>):(
                 <div className="d-flex flex-wrap">
                 {services.map((ele,i)=>(
-              <ServiceCard serviceTitle={ele.serviceName} serviceDescription={ele.serviceDescription} servicePrice={ele.servicePrice} key={i} updateFormType={updateFormType} openUpdateModal={openUpdateModal} id={i} deleteService={deleteService}/>
+              <ServiceCard serviceTitle={ele.serviceName} serviceDescription={ele.serviceDescription} servicePrice={ele.servicePrice} key={i} openUpdateModal={openUpdateModal} id={i} deleteService={deleteService}/>
             ))}
                 </div>
               )}
