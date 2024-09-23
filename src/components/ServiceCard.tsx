@@ -21,7 +21,7 @@ export default function ServiceCard({id,serviceTitle,serviceDescription,serviceP
       {isOptions?(<span onClick={()=>{setIsOptions(false)}}><CloseIcon width="20" height="20"/></span>):(<span onClick={()=>{setIsOptions(true)}}><VerticalDots width="20" height="20" /></span>)}
     </div>
     </>)}
-    <h5 className="card-title fw-normal fs-1  text-center">{serviceTitle}</h5>
+    <h5 className="card-title fw-normal fs-1  text-center p-sm-1 px-3 p-md-0">{serviceTitle}</h5>
     <p className="card-text lead fs-5 p-2 mb-0 fw-light">{serviceDescription}</p>
     <p className="fw-semibold fs-3 mt-0  mb-1 p-2">Price-<span className="fw-semibold fs-3  mb-0 text-warning">${servicePrice}</span></p>
     <button className="bg-warning border-0 px-3 py-2 rounded-2 fs-5 text-white  mb-2 shadow-sm fw-semobold">Buy Now</button>
