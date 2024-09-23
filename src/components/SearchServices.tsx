@@ -43,8 +43,8 @@ export default function SearchServices({getServices}:{getServices?:()=>serviceDa
     // console.log(services)
     return(
         <div>
-            <h1 className="text-center text-warning">Search Services</h1>
-            <div className=""><input type="search" placeholder="search services..." className="border-warning border px-3 py-1 rounded w-75 mx-auto d-block" onChange={(e)=>{setSearchText(e.target.value)}} /></div>
+            <h1 className="text-center text-warning inter fw-bold">Search Services</h1>
+            <div className=""><input type="search" placeholder="search services..." className="border-warning border px-3 py-1 rounded-5 w-75 mx-auto d-block inter" onChange={(e)=>{setSearchText(e.target.value)}} /></div>
             <div className="d-flex container flex-wrap">
               {searchedServices.map((ele,i)=>(
                 <ServiceCard serviceDescription={ele.serviceDescription} servicePrice={ele.servicePrice} serviceTitle={ele.serviceName} key={i} id={i} inSearch={true}/>

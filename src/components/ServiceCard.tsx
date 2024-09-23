@@ -7,7 +7,7 @@ export default function ServiceCard({id,serviceTitle,serviceDescription,serviceP
    
     return(
         <>
-        <div className="card bg-white rounded-4 shadow-sm border-1 mx-2 my-3 position-relative" style={{width:'18rem'}} >
+        <div className="card bg-white rounded-4 shadow-sm border-1 mx-2 my-3 position-relative inter" style={{width:'18rem'}} >
           {inSearch?(<></>):(<>
             {isOptions && <div className="position-absolute bg-light px-4 py-2 rounded shadow" style={{top:"-2rem",left:'1rem'}}>
             <button className="btn btn-outline-secondary mx-2" onClick={()=>{openUpdateModal?openUpdateModal(id):''}}>update</button>
@@ -22,9 +22,9 @@ export default function ServiceCard({id,serviceTitle,serviceDescription,serviceP
     </div>
     </>)}
     <h5 className="card-title fw-normal fs-1  text-center">{serviceTitle}</h5>
-    <p className="card-text lead fs-5 p-2 mb-0">{serviceDescription}</p>
+    <p className="card-text lead fs-5 p-2 mb-0 fw-light">{serviceDescription}</p>
     <p className="fw-semibold fs-3 mt-0  mb-1 p-2">Price-<span className="fw-semibold fs-3  mb-0 text-warning">${servicePrice}</span></p>
-    <button className="bg-warning border-0 px-3 py-2 rounded-2 fs-5 text-white fw-normal mb-2 shadow-sm">Buy Now</button>
+    <button className="bg-warning border-0 px-3 py-2 rounded-2 fs-5 text-white  mb-2 shadow-sm fw-semobold">Buy Now</button>
   </div>
 </div>
         </>

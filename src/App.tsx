@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import ServiceCard from "./components/ServiceCard";
 import ServiceForm from "./components/ServiceForm";
 import SearchServices from "./components/SearchServices";
-
+import './App.css';
 type serviceData = {
   id:number,
   serviceName: string;
@@ -16,7 +16,8 @@ function App() {
   const serviceForm = useRef<HTMLDialogElement | null>(null);
   const [isServices,setIsServices]=useState(true);
   const [formType,setFormType]=useState<"add" | 'update' | "delete">('add');
-  const [updateId,setUpdateId]=useState<number | null>(null)
+  const [updateId,setUpdateId]=useState<number | null>(null);
+  const [updatingData,setUpdatingData]=useState<serviceData | null>(null);
  
   function createService(data: serviceData) {
    data.id=services.length;
@@ -56,13 +57,17 @@ serviceForm.current?.close();
       data.id=updateId
     }
    updateService(data);
+   setUpdatingData(null);
   }
   }
   function openAddModal(){
     setFormType("add");
+    setUpdatingData(null)
     serviceForm.current?.showModal();
   }
   function openUpdateModal(id:number){
+    let updateData=services.filter((ele)=>ele.id==id)[0];
+    setUpdatingData(updateData);
     setFormType('update');
     setUpdateId(id);
     serviceForm.current?.showModal();
@@ -91,24 +96,24 @@ serviceForm.current?.close();
               X
             </button>
           </div>
-          <ServiceForm handleService={handleService} />
+          <ServiceForm handleService={handleService} updateData={updatingData}/>
         </dialog>
 
-        <h1 className="text-center display-3 text-warning fw-semibold ">Health Services</h1>
-        <div className="d-flex my-3">
-        <p className="mx-2 rounded-3  fw-semibold fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning" style={{cursor:'pointer'}} onClick={()=>{setIsServices(true)}}>
+        <h1 className="text-center  text-warning  fw-bold inter py-4" style={{fontSize:'3rem'}}>Health Services</h1>
+        <div className="d-flex mb-3 ">
+        <p className="mx-2 rounded-3 fw-normal fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning inter fw-semibold" style={{cursor:'pointer'}} onClick={()=>{setIsServices(true)}}>
              Services
             </p>
-        <p className="mx-2 rounded-3  fw-normal fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning" onClick={()=>{setIsServices(false)}} style={{cursor:'pointer'}}>
+        <p className="mx-2 rounded-3  fw-normal fs-5 my-auto border px-3 py-1 bg-warning text-white border-warning inter fw-semibold" onClick={()=>{setIsServices(false)}} style={{cursor:'pointer'}}>
              Search services
             </p>
         </div>
 
-        <div className="p-md-4 border border-warning rounded">
+        <div className="p-md-4 p-sm-2 p-2 border border-warning rounded">
           {isServices?(<>
-            <div className="d-flex p-3">
+            <div className="d-flex p-md-3 p-sm-2 p-2 inter ">
             <button
-              className="btn btn-warning mx-2"
+              className="btn btn-warning mx-2 text-white"
               onClick={() => {
                 openAddModal()
               }}
@@ -119,7 +124,7 @@ serviceForm.current?.close();
           <div className=" ">
               {services.length==0?(<>
                 <div>
-                <h2 className="text-center text-white">Create a Service</h2>
+                <h2 className="text-center text-white my-2 inter fw-bolder">Create a Service</h2>
                 </div>
               </>):(
                 <div className="d-flex flex-wrap justify-content-center">

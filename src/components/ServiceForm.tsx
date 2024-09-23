@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 type serviceData = {
   serviceName: string;
   serviceDescription: string;
@@ -8,9 +9,9 @@ type serviceData = {
   id:number
 };
 export default function ServiceForm({
-  handleService
+  handleService,updateData
 }: {
-  handleService?: (data:serviceData) => void,
+  handleService?: (data:serviceData) => void,updateData:null | serviceData
   
 }) {
   const formSchema = z.object({
@@ -31,9 +32,13 @@ export default function ServiceForm({
       servicePrice: 6,
     },
   });
-
+  useEffect(()=>{
+if(updateData){
+  reset(updateData); 
+}
+else{reset({serviceName:'',serviceDescription:'',servicePrice:6})}
+  },[updateData]);
   function onSubmit(data: serviceData) {
-    
       if (handleService) {
        handleService(data);
         reset(); //resetting form values
@@ -47,19 +52,19 @@ export default function ServiceForm({
       <div className="form_box p-3">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
-            <label htmlFor="serviceName" className="form-label  fs-5 fw-normal">
+            <label htmlFor="serviceName" className="form-label  fs-5 fw-light inter">
               Service Name
             </label>
             <input
               type="text"
               {...register("serviceName")}
-              className="form-control"
+              className="form-control inter fw-light"
               id="serviceName"
               aria-describedby="emailHelp"
               placeholder="service name..."
             />
             {errors.serviceName && (
-              <small className="text-wrap text-danger">
+              <small className="text-wrap text-danger inter fw-light">
                 <em>{errors.serviceName.message}</em>
               </small>
             )}
@@ -67,14 +72,14 @@ export default function ServiceForm({
           <div className="mb-3">
             <label
               htmlFor="serviceDescription"
-              className="form-label  fs-5 fw-normal"
+              className="form-label  fs-5 fw-light inter"
             >
               Service Description
             </label>
             <textarea
               {...register("serviceDescription")}
               id="serviceDescription"
-              className="form-control"
+              className="form-control inter fw-light"
               placeholder="service description..."
             ></textarea>
             {errors.serviceDescription && (
@@ -86,14 +91,14 @@ export default function ServiceForm({
           <div className="mb-3">
             <label
               htmlFor="servicePrice"
-              className="form-label  fs-5 fw-normal"
+              className="form-label  fs-5 fw-light inter"
             >
               Service Price
             </label>
             <input
               type="number"
               {...register("servicePrice")}
-              className="form-control"
+              className="form-control inter fw-light"
               id="servicePrice" min={6}
             />
             {errors.servicePrice && (
@@ -102,7 +107,7 @@ export default function ServiceForm({
               </small>
             )}
           </div>
-          <button type="submit" className="btn btn-warning">
+          <button type="submit" className="btn btn-warning inter text-white">
             Submit
           </button>
         </form>
